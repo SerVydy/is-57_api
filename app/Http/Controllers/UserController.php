@@ -55,4 +55,11 @@ class UserController extends Controller
         }
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
+    public function logout()
+    {
+        Auth::user()->tokens()->delete();
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
 }
